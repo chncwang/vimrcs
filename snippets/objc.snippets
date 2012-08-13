@@ -1,0 +1,17 @@
+#import
+snippet impf
+	#import "${1:file}.h"
+#class
+snippet mtimp
+	${1:-} (${2:void})${3:fun_name}
+	{${4}
+	}
+snippet prr
+	${1:-} (${2:NSString *})${3:fun_name}
+	{
+	    if (_$3 == ${4:nil}) {${5}
+	        _$3 = ${6:text};
+	    }
+
+	    return _$3;
+	}

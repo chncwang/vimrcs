@@ -1,0 +1,122 @@
+# Read File Into Vector
+snippet readfile
+	std::vector<char> v;
+	if (FILE *${2:fp} = fopen(${1:"filename"}, "r")) {
+		char buf[1024];
+		while (size_t len = fread(buf, 1, sizeof(buf), $2))
+			v.insert(v.end(), buf, buf + len);
+		fclose($2);
+	}${3}
+# std::map
+snippet map
+	map<${1:key}, ${2:value}> map${3};
+# std::vector
+snippet vector
+	vector<${1:char}> v${2};
+# Namespace
+snippet ns
+	namespace ${1:`Filename('', 'my')`} {
+		${2}
+	}
+snippet uns
+	using namespace ${1:name};${2}
+# cast
+snippet ccst
+	const_cast<${1:type}>(${2:var})${3}
+snippet scst
+	static_cast<${1:type}>(${2:var})${3}
+snippet dcst
+	dynamic_cast<${1:type}>(${2:var})${3}
+# Class
+snippet cldef
+	class ${1:`Filename('$1', 'name')`}
+	{
+	public:
+	    explicit $1();
+	    virtual ~$1();
+	
+	protected:
+	
+	private:
+	    DISALLOW_COPY_AND_ASSIGN($1);
+	};
+snippet climp
+	${1:CLASS_NAME}::$1()
+	{
+	}
+
+
+	$1::~$1()
+	{
+	}
+snippet clsdef
+	class ${1:`Filename('$1', 'name')`}
+	{
+	public:
+	    static $1 &Instance();
+
+	protected:
+	
+	private:
+	    explicit $1();
+	    virtual ~$1();
+	    DISALLOW_COPY_AND_ASSIGN($1);
+	};
+snippet clsimp
+	${1:class_name} &Instance()
+	{
+	    static $1 instance;
+	    return instance;
+	}
+	
+	
+	$1::$1()
+	{
+	}
+	
+	
+	$1::~$1()
+	{
+	}
+snippet mtimp
+	${1:void} ${2:CLASS_NAME}::${3:METHOD_NAME}(${4})${5: const}
+	{${6}
+	}
+snippet mtdef
+	${1}${2:void} ${3:method_name}(${4:args})${5: const};
+# template
+snippet tmdef
+	template <typename ${1}>${2}
+# cocos2d-x
+snippet layerh
+	#ifndef ${1:HADER_MACRO}
+	#define $1
+
+	#include "cocos2d.h"
+
+	using namespace cocos2d;
+
+	class ${2:CLASS_NAME} : public ${3:CCLayer}
+	{
+	public:
+	    LAYER_NODE_FUNC($2);
+	    bool init();
+
+	protected:
+
+	private:
+	};
+
+	#endif
+snippet layercpp
+	#include "${1}.h"
+
+
+	bool ${2:CLASSNAME}::init()
+	{
+	    if (${3:CCLayer}::init()) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
