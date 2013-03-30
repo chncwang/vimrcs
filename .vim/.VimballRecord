@@ -1,0 +1,2 @@
+winmanager.vba: call delete('/Users/wangqiansheng/.vim/doc/winmanager.txt')|call delete('/Users/wangqiansheng/.vim/plugin/start.gnome')|call delete('/Users/wangqiansheng/.vim/plugin/start.kde')|call delete('/Users/wangqiansheng/.vim/plugin/winfileexplorer.vim')|call delete('/Users/wangqiansheng/.vim/plugin/winmanager.vim')|call delete('/Users/wangqiansheng/.vim/plugin/wintagexplorer.vim')
+supertab.vmb: call delete('/Users/wangqiansheng/.vim/doc/supertab.txt')|call delete('/Users/wangqiansheng/.vim/plugin/supertab.vim')

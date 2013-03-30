@@ -29,7 +29,8 @@ set backspace=indent,eol,start
 set expandtab
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,default,latin1
-set guifont=Monaco:h14
+set guifont=Monaco:h12
+set fo
 set guitablabel=%M%t
 set helplang=en
 set langmenu=none
@@ -42,6 +43,7 @@ set nocindent
 set autoindent
 set softtabstop=4
 set termencoding=utf-8
+colors evening
 set cc=81
 set number
 set ruler
@@ -52,10 +54,7 @@ filetype indent on
 syntax on
 set autowrite
 if (has("gui_running"))
-    colors evening
     let completeopt=menuone,preview
-else
-    colors desert
 endif
 
 let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
@@ -63,7 +62,7 @@ let Tlist_Auto_Open=0
 let Tlist_Process_File_Always=1
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Sort_Type="order"
-let Tlist_WinWidth=30
+let Tlist_WinWidth=50
 let Tlist_Compact_Format=1
 let Tlist_Enable_Fold_Column=0
 let Tlist_Display_Prototype=1
@@ -137,11 +136,16 @@ command Rc e ~
 command Jj inoremap jj <ESC>
 command Uj unmap! jj
 
+function QswVimEnter()
+    NERDTree
+endfunction
+
 function ChncwangInsertLeave()
     wall
     Tu
 endfunction
 
+autocmd VimEnter * call QswVimEnter()
 autocmd InsertLeave * call ChncwangInsertLeave()
 let g:C_MapLeader  = '\'
 let g:C_ObjExtension = '.m .mm'
