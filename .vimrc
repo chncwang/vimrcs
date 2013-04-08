@@ -2,25 +2,6 @@
 set nocp
 let s:cpo_save=&cpo
 set cpo&vim
-imap <D-BS> 
-imap <M-BS> 
-imap <M-Down> }
-inoremap <D-Down> <C-End>
-imap <M-Up> {
-inoremap <D-Up> <C-Home>
-noremap! <M-Right> <C-Right>
-noremap! <D-Right> <End>
-noremap! <M-Left> <C-Left>
-noremap! <D-Left> <Home>
-nmap gx <Plug>NetrwBrowseX
-map <M-Down> }
-noremap <D-Down> <C-End>
-map <M-Up> {
-noremap <D-Up> <C-Home>
-noremap <M-Right> <C-Right>
-noremap <D-Right> <End>
-noremap <M-Left> <C-Left>
-noremap <D-Left> <Home>
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowse
 let &cpo=s:cpo_save
 unlet s:cpo_save
@@ -58,12 +39,12 @@ else
     colors desert
 endif
 
-let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
+let Tlist_Ctags_Cmd="/usr/bin/ctags"
 let Tlist_Auto_Open=0
 let Tlist_Process_File_Always=1
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Sort_Type="order"
-let Tlist_WinWidth=30
+let Tlist_WinWidth=80
 let Tlist_Compact_Format=1
 let Tlist_Enable_Fold_Column=0
 let Tlist_Display_Prototype=1
@@ -99,15 +80,13 @@ function ChangeFiletypeBetweenCppAndObjcpp()
 endfunction
 
 vmap <F2> <ESC><ESC>:call EnhancedCommentify('guess', 'comment')<CR>
-nmap <F2> :wall<CR>:Tt<CR>
-imap <F2> <ESC>:Tt<CR>
 nmap <F3> :wall<CR>:A<CR>
 imap <F3> <ESC>:wall<CR>:A<CR>
 map <F5> <ESC><C-w>k:q<CR>
 imap <F5> <ESC><C-w>k:q<CR>a
 map <F8> :%s/\s\+$//<CR>
 "map <F10> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/local/boost_1_50_0/libs/smart_ptr /Library/lua-5.2.1/src<CR>
-map <F10> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.2.1<CR>
+map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6.3<CR>
 
 map th <C-w>h
 map tl <C-w>l
@@ -119,6 +98,12 @@ nmap tn :tnext<CR>
 map zu <C-u>
 map zd <C-d>
 
+function BuildIde()
+    TlistToggle
+    Nt
+endfunction
+
+command Ide call BuildIde()
 command Tu TlistUpdate
 command Tt TlistToggle
 command Rb ReadBookmarks
