@@ -2,25 +2,7 @@
 set nocp
 let s:cpo_save=&cpo
 set cpo&vim
-imap <D-BS> 
-imap <M-BS> 
-imap <M-Down> }
-inoremap <D-Down> <C-End>
-imap <M-Up> {
-inoremap <D-Up> <C-Home>
-noremap! <M-Right> <C-Right>
-noremap! <D-Right> <End>
-noremap! <M-Left> <C-Left>
-noremap! <D-Left> <Home>
 nmap gx <Plug>NetrwBrowseX
-map <M-Down> }
-noremap <D-Down> <C-End>
-map <M-Up> {
-noremap <D-Up> <C-Home>
-noremap <M-Right> <C-Right>
-noremap <D-Right> <End>
-noremap <M-Left> <C-Left>
-noremap <D-Left> <Home>
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowse
 let &cpo=s:cpo_save
 unlet s:cpo_save
@@ -52,11 +34,9 @@ filetype indent on
 syntax on
 set autowrite
 if (has("gui_running"))
-    colors evening
     let completeopt=menuone,preview
-else
-    colors desert
 endif
+colors evening
 
 let Tlist_Ctags_Cmd="/usr/bin/ctags"
 let Tlist_Auto_Open=0
