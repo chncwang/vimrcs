@@ -9,7 +9,7 @@ set backspace=indent,eol,start
 set expandtab
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,default,latin1
-set guifont=Monaco:h14
+set guifont=Monaco\ 12
 set guitablabel=%M%t
 set helplang=en
 set langmenu=none
