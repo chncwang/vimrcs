@@ -2,7 +2,6 @@
 set nocp
 let s:cpo_save=&cpo
 set cpo&vim
-nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowse
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set background=dark
@@ -33,11 +32,9 @@ filetype indent on
 syntax on
 set autowrite
 if (has("gui_running"))
-    colors evening
     let completeopt=menuone,preview
-else
-    colors desert
 endif
+colors evening
 
 let Tlist_Ctags_Cmd="/usr/bin/ctags"
 let Tlist_Auto_Open=0
