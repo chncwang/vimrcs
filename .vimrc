@@ -22,7 +22,11 @@ set nocindent
 set autoindent
 set softtabstop=4
 set termencoding=utf-8
-set cc=81
+if &filetype == "java"
+    set cc=100
+else
+    set cc=80
+endif
 set number
 set ruler
 inoremap jj <ESC>
@@ -139,3 +143,17 @@ let g:Lua_Email = "chncwang@gmail.com"
 let g:Lua_Company = "Jialidun"
 
 let g:C_Printheader = 0
+
+nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
+nnoremap <silent> <buffer> <cr> :JavaSerachContext<cr>
+
+command Jc JavaCorrect
+command Jdp JavaDocPreview
+command Jds JavaDocSearch
+command Jdc JavaDocComment
+command Jf JavaFormat
+command Ji JavaImport
+command Jio JavaImportOrganize
+command Js JavaSearch
+command Jr JavaRename
