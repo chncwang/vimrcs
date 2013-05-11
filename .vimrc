@@ -21,7 +21,15 @@ set nocindent
 set autoindent
 set softtabstop=4
 set termencoding=utf-8
+<<<<<<< HEAD
 set cc=80
+=======
+if &filetype == "java"
+    set cc=100
+else
+    set cc=80
+endif
+>>>>>>> 7c7b73c05af001b5a82010c3d933a7b6b8a94ba6
 set number
 set ruler
 inoremap jj <ESC>
@@ -135,4 +143,20 @@ let g:Lua_Company = "Jialidun"
 
 let g:C_Printheader = 0
 
+<<<<<<< HEAD
 let g:EclimCValidate = 0
+=======
+nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
+nnoremap <silent> <buffer> <cr> :JavaSerachContext<cr>
+
+command Jc JavaCorrect
+command Jdp JavaDocPreview
+command Jds JavaDocSearch
+command Jdc JavaDocComment
+command Jf JavaFormat
+command Ji JavaImport
+command Jio JavaImportOrganize
+command Js JavaSearch
+command Jr JavaRename
+>>>>>>> 7c7b73c05af001b5a82010c3d933a7b6b8a94ba6
