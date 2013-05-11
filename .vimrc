@@ -10,7 +10,6 @@ set expandtab
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,default,latin1
 set guifont=Monaco\ 12
-set guitablabel=%M%t
 set helplang=en
 set langmenu=none
 set autoindent
@@ -22,7 +21,7 @@ set nocindent
 set autoindent
 set softtabstop=4
 set termencoding=utf-8
-set cc=81
+set cc=80
 set number
 set ruler
 inoremap jj <ESC>
@@ -41,7 +40,7 @@ let Tlist_Auto_Open=0
 let Tlist_Process_File_Always=1
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Sort_Type="order"
-let Tlist_WinWidth=80
+let Tlist_WinWidth=60
 let Tlist_Compact_Format=1
 let Tlist_Enable_Fold_Column=0
 let Tlist_Display_Prototype=1
@@ -82,8 +81,6 @@ imap <F3> <ESC>:wall<CR>:A<CR>
 map <F5> <ESC><C-w>k:q<CR>
 imap <F5> <ESC><C-w>k:q<CR>a
 map <F8> :%s/\s\+$//<CR>
-"map <F10> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/local/boost_1_50_0/libs/smart_ptr /Library/lua-5.2.1/src<CR>
-map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6.3<CR>
 
 map th <C-w>h
 map tl <C-w>l
@@ -92,14 +89,12 @@ map tj <C-w>j
 map tr <C-w><C-r>
 nmap tn :tnext<CR>
 
-map zu <C-u>
-map zd <C-d>
-
 function BuildIde()
     TlistToggle
     Nt
 endfunction
 
+command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6.3/
 command Ide call BuildIde()
 command Tu TlistUpdate
 command Tt TlistToggle
@@ -139,3 +134,5 @@ let g:Lua_Email = "chncwang@gmail.com"
 let g:Lua_Company = "Jialidun"
 
 let g:C_Printheader = 0
+
+let g:EclimCValidate = 0
