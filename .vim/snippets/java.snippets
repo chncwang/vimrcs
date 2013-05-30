@@ -40,39 +40,59 @@ snippet j.n
 	java.net.
 snippet j.m
 	java.math.
-snippet if
-	if (${1}) ${2}
-snippet el
-	else 
-snippet elif
-	else if (${1}) ${2}
-snippet wh
-	while (${1}) ${2}
-snippet for
-	for (${1}; ${2}; ${3}) ${4}
-snippet fore
-	for (${1} : ${2}) ${3}
+snippet sif
+	if (${1}) {
+	    ${2}
+	}
+snippet sel
+	else {
+	    ${1}
+	}
 snippet sw
-	switch (${1}) ${2}
-snippet cs
-	case ${1}:
-		${2}
-	${3}
+	while (${1}) {
+	    ${2}
+	}
+snippet sfr
+	for (${1}; ${2}; ${3}) {
+	    ${4}
+	}
+snippet sit
+	for (${1} : ${2}) {
+	    ${3}
+	}
 snippet tc
 	public class ${1:`Filename()`} extends ${2:TestCase}
-snippet t
-	public void test${1:Name}() throws Exception ${2}
 snippet cl
 	class ${1:`Filename("", "untitled")`} ${2}
 snippet in
 	interface ${1:`Filename("", "untitled")`} ${2:extends Parent}${3}
-snippet m
-	${1:void} ${2:method}(${3}) ${4:throws }${5}
+snippet fun
+	${1:public} ${2:void} ${3:method}(${4}) {
+	    ${5}
+	}
+snippet test
+	@Test
+	public void test${1:Name} {
+	    ${2://body}
+	}
 snippet v
 	${1:String} ${2:var}${3: = null}${4};${5}
-snippet co
-	static public final ${1:String} ${2:var} = ${3};${4}
-snippet cos
-	static public final String ${1:var} = "${2}";${3}
 snippet as
 	assert ${1:test} : "${2:Failure message}";${3}
+snippet debug
+	LOG.debug("${1:func_name}", ${2});
+snippet error
+	LOG.error("${1:func_name}", ${2});
+snippet warn
+	LOG.warn("${1:func_name}", ${2});
+snippet info
+	LOG.info("${1:func_name}", ${2});
+snippet log
+	${1:private} static final QHLogger LOG = QHLogger.getLogger(${2:class_name}.class);
+snippet lv
+	"$1", ${1}
+
+snippet prvsf
+	private static final 
+snippet prvsfs
+	private static final String 
