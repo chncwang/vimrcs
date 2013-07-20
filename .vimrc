@@ -122,9 +122,10 @@ command Hc help csupport
 command Rc e ~
 command Jj inoremap jj <ESC>
 command Uj unmap! jj
+command Cc set cc=80
+command Oc set cc=0
 
 function ChncwangInsertLeave()
-    wall
     Tu
 endfunction
 
