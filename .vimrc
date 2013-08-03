@@ -112,7 +112,16 @@ command Hc help csupport
 command Rc e ~
 command Jj inoremap jj <ESC>
 command Uj unmap! jj
+<<<<<<< HEAD
 command Db %s/\s\+$//
+=======
+command Cc set cc=80
+command Oc set cc=0
+
+function ChncwangInsertLeave()
+    Tu
+endfunction
+>>>>>>> b36212932378da9fc663f367183500f5b7f3757a
 
 autocmd InsertLeave * call ChncwangInsertLeave()
 
