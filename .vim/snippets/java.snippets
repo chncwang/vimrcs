@@ -52,6 +52,10 @@ snippet sw
 	while (${1}) {
 	    ${2}
 	}
+snippet sdw
+	do {
+	    ${2://content}
+	} while (${1:condition});
 snippet sfr
 	for (${1}; ${2}; ${3}) {
 	    ${4}
@@ -72,7 +76,7 @@ snippet fun
 	}
 snippet test
 	@Test
-	public void test${1:Name} {
+	public void test${1:Name}() {
 	    ${2://body}
 	}
 snippet v
@@ -90,9 +94,22 @@ snippet info
 snippet log
 	${1:private} static final QHLogger LOG = QHLogger.getLogger(${2:class_name}.class);
 snippet lv
-	"$1", ${1}
-
+	"$1", ${1:var_name}${2}
 snippet prvsf
 	private static final 
 snippet prvsfs
 	private static final String 
+snippet prtsf
+	protected static final 
+snippet prtsfs
+	protected static final String 
+snippet pubsfi
+	public static final int 
+snippet pubsf
+	public static final 
+snippet pubsfs
+	public static final String 
+snippet fs
+	final String 
+snippet rn
+	return null;

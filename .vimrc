@@ -35,19 +35,6 @@ if (has("gui_running"))
 endif
 colors evening
 
-let Tlist_Ctags_Cmd="/usr/bin/ctags"
-let Tlist_Auto_Open=0
-let Tlist_Process_File_Always=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Sort_Type="order"
-let Tlist_WinWidth=60
-let Tlist_Compact_Format=1
-let Tlist_Enable_Fold_Column=0
-let Tlist_Display_Prototype=1
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=0
-let Tlist_Use_Right_Window=1
-
 let g:NERDTree_title="[NERDTree]"  
 function! NERDTree_Start()  
     exec 'NERDTree'  
@@ -64,7 +51,6 @@ let NERDTreeMinimalUI=1
 let NERDTreeChDirMode=2
 let NERDTreeMouseMode=1
 
-
 function ChangeFiletypeBetweenCppAndObjcpp()
     if &filetype=="cpp"
         set filetype=objc
@@ -80,14 +66,14 @@ nmap <F3> :wall<CR>:A<CR>
 imap <F3> <ESC>:wall<CR>:A<CR>
 map <F5> <ESC><C-w>k:q<CR>
 imap <F5> <ESC><C-w>k:q<CR>a
-map <F8> :%s/\s\+$//<CR>
 
-map th <C-w>h
-map tl <C-w>l
-map tk <C-w>k
-map tj <C-w>j
-map tr <C-w><C-r>
+nmap th <C-w>h
+nmap tl <C-w>l
+nmap tk <C-w>k
+nmap tj <C-w>j
+nmap tr <C-w><C-r>
 nmap tn :tnext<CR>
+nmap rjv 20<C-w>>2<C-w>l22<C-w><2<C-w>h
 
 function BuildIde()
     let Tlist_WinWidth=80
@@ -98,8 +84,12 @@ endfunction
 function BuildJava()
     set cc=100
     TlistToggle
-    let Tlist_WinWidth=200
     Nt
+endfunction
+
+function ChncwangInsertLeave()
+    wall
+    Tu
 endfunction
 
 command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6.3/
@@ -122,16 +112,14 @@ command Hc help csupport
 command Rc e ~
 command Jj inoremap jj <ESC>
 command Uj unmap! jj
-
-function ChncwangInsertLeave()
-    wall
-    Tu
-endfunction
+command Db %s/\s\+$//
 
 autocmd InsertLeave * call ChncwangInsertLeave()
+
 let g:C_MapLeader  = '\'
 let g:C_ObjExtension = '.m .mm'
 
+" OmniFunc configs.
 let OmniCpp_NamespaceSearch = 2
 let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_DefaultNamespaces = ["std", "cocos2d", "boost", "map"]
@@ -141,14 +129,27 @@ let g:Lua_AuthorName = "Chauncey Wang"
 let g:Lua_AuthorRef = "None"
 let g:Lua_Email = "chncwang@gmail.com"
 let g:Lua_Company = "Jialidun"
-
 let g:C_Printheader = 0
 
+" TagList configs.
+let Tlist_Ctags_Cmd="/usr/bin/ctags"
+let Tlist_Auto_Open=0
+let Tlist_Process_File_Always=1
+let Tlist_File_Fold_Auto_Close=1
+let Tlist_Sort_Type="order"
+let Tlist_WinWidth=60
+let Tlist_Compact_Format=1
+let Tlist_Enable_Fold_Column=0
+let Tlist_Display_Prototype=1
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=0
+let Tlist_Use_Right_Window=1
+
+" Eclim configs.
 let g:EclimCValidate = 0
 nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
 nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
 nnoremap <silent> <buffer> <cr> :JavaSerachContext<cr>
-
 command Jc JavaCorrect
 command Jdp JavaDocPreview
 command Jds JavaDocSearch
