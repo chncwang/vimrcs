@@ -112,8 +112,8 @@ command Rc e ~
 command Jj inoremap jj <ESC>
 command Uj unmap! jj
 command Db %s/\s\+$//
-command Cc set cc=80
-command Oc set cc=0
+command Oc set cc=80
+command Cc set cc=0
 
 autocmd InsertLeave * call ChncwangInsertLeave()
 
