@@ -87,7 +87,6 @@ function BuildJava()
 endfunction
 
 function ChncwangInsertLeave()
-    wall
     Tu
 endfunction
 
