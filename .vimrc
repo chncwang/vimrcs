@@ -87,7 +87,7 @@ function BuildJava()
 endfunction
 
 function ChncwangInsertLeave()
-    Tu
+"    Tu
 endfunction
 
 command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6.3/
