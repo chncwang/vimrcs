@@ -1,9 +1,13 @@
 #!/bin/sh
 
-sudo cp -r .vim ${HOME}/
-echo ".vim installed."
-sudo cp .vimrc ${HOME}/
-echo ".vimrc installed."
-sudo cp MONACO.TTF ${HOME}/.fonts
-sudo apt-get install exuberant-ctags
-echo "Install successfully!"
+rm -rf ${HOME}/.vim && cp -r .vim ${HOME}/ && echo ".vim installed!" || \
+    echo "Copy .vim failed!"
+
+sudo cp .vimrc ${HOME}/ && echo ".vimrc installed!" || \
+    echo "Copy .vimrc failed!"
+
+cp MONACO.TTF ${HOME}/.fonts && echo "install monaco succeeded!" || \
+    echo "Install monaco failed!"
+
+sudo apt-get install exuberant-ctags && echo "Install ctags successfully!" || \
+    echo "Install ctags failed!"

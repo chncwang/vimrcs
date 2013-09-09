@@ -7,6 +7,7 @@ unlet s:cpo_save
 set background=dark
 set backspace=indent,eol,start
 set expandtab
+set shiftwidth=4
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,default,latin1
 set guifont=Monaco\ 12
@@ -15,11 +16,9 @@ set langmenu=none
 set autoindent
 set mouse=a
 set printexpr=system('open\ -a\ Preview\ '.v:fname_in)\ +\ v:shell_error
-set shiftwidth=4
 set smartindent
 set nocindent
 set autoindent
-set softtabstop=4
 set termencoding=utf-8
 set number
 set ruler
@@ -33,6 +32,7 @@ if (has("gui_running"))
     let completeopt=preview
 endif
 colors evening
+set cc=80
 
 let g:NERDTree_title="[NERDTree]"  
 function! NERDTree_Start()  
@@ -72,6 +72,7 @@ nmap tk <C-w>k
 nmap tj <C-w>j
 nmap tr <C-w><C-r>
 nmap tn :tnext<CR>
+nmap tp :tprevious<CR>
 nmap rjv 20<C-w>>2<C-w>l22<C-w><2<C-w>h
 
 function BuildIde()
@@ -87,7 +88,8 @@ function BuildJava()
 endfunction
 
 function ChncwangInsertLeave()
-"    Tu
+    wall
+    Tu
 endfunction
 
 command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6.3/
@@ -107,7 +109,7 @@ command Hn help nerd_tree.txt
 command Ho help omnicppcomplete
 command Hs help snipmate
 command Hc help csupport
-command Rc e ~
+command Rc e ~/.vimrc
 command Jj inoremap jj <ESC>
 command Uj unmap! jj
 command Db %s/\s\+$//
