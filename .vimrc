@@ -90,7 +90,7 @@ function ChncwangInsertLeave()
 "    Tu
 endfunction
 
-command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6.3/
+command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6 /usr/include/c++/4.6/x86_64-linux-gnu  /usr/include/c++/4.6/backward /usr/lib/gcc/x86_64-linux-gnu/4.6/include /usr/local/include /usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed /usr/include/x86_64-linux-gnu /usr/include
 command Ide call BuildIde()
 command Java call BuildJava()
 command Tu TlistUpdate
