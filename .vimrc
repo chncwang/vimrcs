@@ -159,3 +159,6 @@ command Ji JavaImport
 command Jio JavaImportOrganize
 command Js JavaSearch
 command Jr JavaRename
+
+" pathogen
+execute pathogen#infect()
