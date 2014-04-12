@@ -72,6 +72,7 @@ nmap tk <C-w>k
 nmap tj <C-w>j
 nmap tr <C-w><C-r>
 nmap tn :tnext<CR>
+nmap tp :tprevious<CR>
 nmap rjv 20<C-w>>2<C-w>l22<C-w><2<C-w>h
 
 function BuildIde()
