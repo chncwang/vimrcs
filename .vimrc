@@ -50,17 +50,6 @@ let NERDTreeMinimalUI=1
 let NERDTreeChDirMode=2
 let NERDTreeMouseMode=1
 
-function ChangeFiletypeBetweenCppAndObjcpp()
-    if &filetype=="cpp"
-        set filetype=objc
-    else
-        set filetype=cpp
-    endif
-    Tt
-    Tt
-endfunction
-
-vmap <F2> <ESC><ESC>:call EnhancedCommentify('guess', 'comment')<CR>
 nmap <F3> :wall<CR>:A<CR>
 imap <F3> <ESC>:wall<CR>:A<CR>
 map <F5> <ESC><C-w>k:q<CR>
@@ -76,7 +65,6 @@ nmap tp :tprevious<CR>
 nmap rjv 20<C-w>>2<C-w>l22<C-w><2<C-w>h
 
 function BuildIde()
-    let Tlist_WinWidth=80
     TlistToggle
     Nt
 endfunction
@@ -85,10 +73,6 @@ function BuildJava()
     set cc=100
     TlistToggle
     Nt
-endfunction
-
-function ChncwangInsertLeave()
-"    Tu
 endfunction
 
 command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6 /usr/include/c++/4.6/x86_64-linux-gnu  /usr/include/c++/4.6/backward /usr/lib/gcc/x86_64-linux-gnu/4.6/include /usr/local/include /usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed /usr/include/x86_64-linux-gnu /usr/include 2>&1 &
@@ -114,8 +98,6 @@ command Uj unmap! jj
 command Db %s/\s\+$//
 command Oc set cc=80
 command Cc set cc=0
-
-autocmd InsertLeave * call ChncwangInsertLeave()
 
 let g:C_MapLeader  = '\'
 let g:C_ObjExtension = '.m .mm'
@@ -160,9 +142,6 @@ command Ji JavaImport
 command Jio JavaImportOrganize
 command Js JavaSearch
 command Jr JavaRename
-
-" pathogen
-execute pathogen#infect()
 
 " vim-markdown
 let g:vim_markdown_folding_disabled=1
