@@ -1,4 +1,3 @@
-"version 6.0
 set nocp
 let s:cpo_save=&cpo
 set cpo&vim
@@ -50,11 +49,6 @@ let NERDTreeMinimalUI=1
 let NERDTreeChDirMode=2
 let NERDTreeMouseMode=1
 
-nmap <F3> :wall<CR>:A<CR>
-imap <F3> <ESC>:wall<CR>:A<CR>
-map <F5> <ESC><C-w>k:q<CR>
-imap <F5> <ESC><C-w>k:q<CR>a
-
 nmap th <C-w>h
 nmap tl <C-w>l
 nmap tk <C-w>k
@@ -92,29 +86,37 @@ command Hn help nerd_tree.txt
 command Ho help omnicppcomplete
 command Hs help snipmate
 command Hc help csupport
-command Rc e ~
+command Rc e ~/.vimrc
 command Jj inoremap jj <ESC>
 command Uj unmap! jj
 command Db %s/\s\+$//
 command Oc set cc=80
 command Cc set cc=0
 
+"======================================================
 let g:C_MapLeader  = '\'
 let g:C_ObjExtension = '.m .mm'
+"======================================================
 
-" OmniFunc configs.
+" OmniCpp configs.
+"======================================================
 let OmniCpp_NamespaceSearch = 2
 let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_DefaultNamespaces = ["std", "cocos2d", "boost", "map"]
 let OmniCpp_MayCompleteScope = 1
+"======================================================
 
+" lua configs.
+"======================================================
 let g:Lua_AuthorName = "Chauncey Wang"
 let g:Lua_AuthorRef = "None"
 let g:Lua_Email = "chncwang@gmail.com"
 let g:Lua_Company = "Jialidun"
 let g:C_Printheader = 0
+"======================================================
 
 " TagList configs.
+"======================================================
 let Tlist_Ctags_Cmd="/usr/bin/ctags"
 let Tlist_Auto_Open=0
 let Tlist_Process_File_Always=1
@@ -127,8 +129,10 @@ let Tlist_Display_Prototype=1
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=0
 let Tlist_Use_Right_Window=1
+"======================================================
 
 " Eclim configs.
+"======================================================
 let g:EclimCValidate = 0
 nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
 nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
@@ -142,6 +146,53 @@ command Ji JavaImport
 command Jio JavaImportOrganize
 command Js JavaSearch
 command Jr JavaRename
+"======================================================
 
 " vim-markdown
+"======================================================
 let g:vim_markdown_folding_disabled=1
+"======================================================
+
+" vundle
+"======================================================
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'klen/python-mode'
+"======================================================
+
+" python mode
+"======================================================
+let g:pymode_rope = 0
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+"Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_key = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+" Don't autofold code
+let g:pymode_folding = 0
+"======================================================
+
+" jedi(python auto complete plugin)
+"======================================================
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#popup_select_first = 0
+"======================================================
