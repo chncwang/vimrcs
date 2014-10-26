@@ -33,6 +33,8 @@ if (has("gui_running"))
 endif
 colors evening
 
+" NERDTree
+"======================================================
 let g:NERDTree_title="[NERDTree]"  
 function! NERDTree_Start()  
     exec 'NERDTree'  
@@ -48,6 +50,9 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeMinimalUI=1
 let NERDTreeChDirMode=2
 let NERDTreeMouseMode=1
+
+command Nt NERDTree
+"======================================================
 
 nmap th <C-w>h
 nmap tl <C-w>l
@@ -76,7 +81,6 @@ command Tu TlistUpdate
 command Tt TlistToggle
 command Rb ReadBookmarks
 command Sn set number
-command Nt NERDTree
 command Lm ListMethods
 command Bm BuildMethods
 command Ha help alternate.txt
@@ -93,26 +97,12 @@ command Db %s/\s\+$//
 command Oc set cc=80
 command Cc set cc=0
 
-"======================================================
-let g:C_MapLeader  = '\'
-let g:C_ObjExtension = '.m .mm'
-"======================================================
-
 " OmniCpp configs.
 "======================================================
 let OmniCpp_NamespaceSearch = 2
 let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_DefaultNamespaces = ["std", "cocos2d", "boost", "map"]
 let OmniCpp_MayCompleteScope = 1
-"======================================================
-
-" lua configs.
-"======================================================
-let g:Lua_AuthorName = "Chauncey Wang"
-let g:Lua_AuthorRef = "None"
-let g:Lua_Email = "chncwang@gmail.com"
-let g:Lua_Company = "Jialidun"
-let g:C_Printheader = 0
 "======================================================
 
 " TagList configs.
@@ -131,34 +121,44 @@ let Tlist_Exit_OnlyWindow=0
 let Tlist_Use_Right_Window=1
 "======================================================
 
-" Eclim configs.
+" Vundle
 "======================================================
-let g:EclimCValidate = 0
-nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
-nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
-nnoremap <silent> <buffer> <cr> :JavaSerachContext<cr>
-command Jc JavaCorrect
-command Jdp JavaDocPreview
-command Jds JavaDocSearch
-command Jdc JavaDocComment
-command Jf JavaFormat
-command Ji JavaImport
-command Jio JavaImportOrganize
-command Js JavaSearch
-command Jr JavaRename
-"======================================================
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" vim-markdown
-"======================================================
-let g:vim_markdown_folding_disabled=1
-"======================================================
+Plugin 'gmarik/Vundle.vim'
 
-" vundle
-"======================================================
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'klen/python-mode'
+" window
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/taglist.vim'
+
+" auto complete
+Plugin 'vim-scripts/AutoComplPop'
+Plugin 'ervandew/supertab'
+
+" quick edit
+Plugin 'hrp/EnhancedCommentify'
+
+" refactoring
+Plugin 'vim-scripts/EasyGrep'
+
+" C++
+Plugin 'vim-scripts/OmniCppComplete'
+Plugin 'vim-scripts/a.vim'
+Plugin 'vimscript/c-support'
+Plugin 'mbbill/echofunc'
+
+" python
+Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
+
+" lua
+Plugin 'vim-scripts/lua-support'
+
+call vundle#end()
+filetype plugin indent on
 "======================================================
 
 " python mode
