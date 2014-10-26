@@ -97,30 +97,6 @@ command Db %s/\s\+$//
 command Oc set cc=80
 command Cc set cc=0
 
-" OmniCpp configs.
-"======================================================
-let OmniCpp_NamespaceSearch = 2
-let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_DefaultNamespaces = ["std", "cocos2d", "boost", "map"]
-let OmniCpp_MayCompleteScope = 1
-"======================================================
-
-" TagList configs.
-"======================================================
-let Tlist_Ctags_Cmd="/usr/bin/ctags"
-let Tlist_Auto_Open=0
-let Tlist_Process_File_Always=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Sort_Type="order"
-let Tlist_WinWidth=60
-let Tlist_Compact_Format=1
-let Tlist_Enable_Fold_Column=0
-let Tlist_Display_Prototype=1
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=0
-let Tlist_Use_Right_Window=1
-"======================================================
-
 " Vundle
 "======================================================
 set nocompatible
@@ -159,6 +135,30 @@ Plugin 'vim-scripts/lua-support'
 
 call vundle#end()
 filetype plugin indent on
+"======================================================
+
+" OmniCpp configs.
+"======================================================
+let OmniCpp_NamespaceSearch = 2
+let OmniCpp_ShowPrototypeInAbbr = 1
+let OmniCpp_DefaultNamespaces = ["std", "cocos2d", "boost", "map"]
+let OmniCpp_MayCompleteScope = 1
+"======================================================
+
+" TagList configs.
+"======================================================
+let Tlist_Ctags_Cmd="/usr/bin/ctags"
+let Tlist_Auto_Open=0
+let Tlist_Process_File_Always=1
+let Tlist_File_Fold_Auto_Close=1
+let Tlist_Sort_Type="order"
+let Tlist_WinWidth=60
+let Tlist_Compact_Format=1
+let Tlist_Enable_Fold_Column=0
+let Tlist_Display_Prototype=1
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=0
+let Tlist_Use_Right_Window=1
 "======================================================
 
 " python mode
