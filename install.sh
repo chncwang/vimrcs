@@ -1,9 +1,11 @@
 #!/bin/sh
 
+sudo pip install jedi
+
 rm -rf ${HOME}/.vim && cp -r .vim ${HOME}/ && echo ".vim installed!" || \
     echo "Copy .vim failed!"
 
-sudo cp .vimrc ${HOME}/ && echo ".vimrc installed!" || \
+cp .vimrc ${HOME}/ && echo ".vimrc installed!" || \
     echo "Copy .vimrc failed!"
 
 cp MONACO.TTF ${HOME}/.fonts && echo "install monaco succeeded!" || \
