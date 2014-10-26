@@ -2,14 +2,17 @@
 
 sudo pip install jedi
 
-rm -rf ${HOME}/.vim && cp -r .vim ${HOME}/ && echo ".vim installed!" || \
-    echo "Copy .vim failed!"
+if [ ! -d ${HOME}/.vim/bundle ]; then
+    mkdir -p ${HOME}/.vim/bundle
+fi
 
-cp .vimrc ${HOME}/ && echo ".vimrc installed!" || \
-    echo "Copy .vimrc failed!"
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-cp MONACO.TTF ${HOME}/.fonts && echo "install monaco succeeded!" || \
-    echo "Install monaco failed!"
+cp -r .vim/ftplugin ${HOME}/.vim/
+cp .vimrc ${HOME}/
 
-sudo apt-get install exuberant-ctags && echo "Install ctags successfully!" || \
-    echo "Install ctags failed!"
+cp MONACO.TTF ${HOME}/.fonts
+
+sudo apt-get install exuberant-ctags
+
+vim +PluginInstall +qall
