@@ -127,7 +127,6 @@ Plugin 'vimscript/c-support'
 Plugin 'mbbill/echofunc'
 
 " python
-Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
 
 " lua
@@ -161,38 +160,9 @@ let Tlist_Exit_OnlyWindow=0
 let Tlist_Use_Right_Window=1
 "======================================================
 
-" python mode
-"======================================================
-let g:pymode_rope = 0
-
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_key = '<leader>b'
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-" Don't autofold code
-let g:pymode_folding = 0
-"======================================================
-
 " jedi(python auto complete plugin)
 "======================================================
+let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#popup_select_first = 0
 "======================================================

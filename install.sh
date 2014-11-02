@@ -15,4 +15,4 @@ cp MONACO.TTF ~/.fonts
 
 sudo apt-get install exuberant-ctags
 
-vim +PluginInstall +qall
+vim +PluginInstall +PluginClean +qall
