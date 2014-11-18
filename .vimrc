@@ -32,6 +32,7 @@ if (has("gui_running"))
     let completeopt=preview
 endif
 colors evening
+set cursorline
 
 " NERDTree
 "======================================================
