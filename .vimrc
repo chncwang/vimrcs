@@ -32,7 +32,6 @@ if (has("gui_running"))
     let completeopt=preview
 endif
 colors evening
-set cursorline
 
 " NERDTree
 "======================================================
@@ -129,6 +128,7 @@ Plugin 'mbbill/echofunc'
 
 " python
 Plugin 'davidhalter/jedi-vim'
+Plugin 'https://github.com/vim-scripts/pylint.vim'
 
 " lua
 Plugin 'vim-scripts/lua-support'
