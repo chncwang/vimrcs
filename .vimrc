@@ -1,3 +1,5 @@
+let osx = 'OS X'
+let linux = 'Linux'
 set nocp
 let s:cpo_save=&cpo
 set cpo&vim
@@ -31,7 +33,19 @@ set autowrite
 if (has("gui_running"))
     let completeopt=preview
 endif
-colors evening
+
+let os = linux
+let s:uname = system("echo -n \"$(uname)\"")
+if s:uname == "Darwin"
+    let os = osx
+endif
+if os == linux
+    colors evening
+    let ctags = '/usr/bin/ctags'
+    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6 /usr/include/c++/4.6/x86_64-linux-gnu  /usr/include/c++/4.6/backward /usr/lib/gcc/x86_64-linux-gnu/4.6/include /usr/local/include /usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed /usr/include/x86_64-linux-gnu /usr/include 2>&1 &
+else
+    let ctags = '/usr/local/bin/ctags'
+endif
 
 " NERDTree
 "======================================================
@@ -74,7 +88,6 @@ function BuildJava()
     Nt
 endfunction
 
-command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6 /usr/include/c++/4.6/x86_64-linux-gnu  /usr/include/c++/4.6/backward /usr/lib/gcc/x86_64-linux-gnu/4.6/include /usr/local/include /usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed /usr/include/x86_64-linux-gnu /usr/include 2>&1 &
 command Ide call BuildIde()
 command Java call BuildJava()
 command Tu TlistUpdate
@@ -124,11 +137,10 @@ Plugin 'vim-scripts/EasyGrep'
 Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vimscript/c-support'
-Plugin 'mbbill/echofunc'
 
 " python
 Plugin 'davidhalter/jedi-vim'
-Plugin 'https://github.com/vim-scripts/pylint.vim'
+Plugin 'vim-scripts/pylint.vim'
 
 " lua
 Plugin 'vim-scripts/lua-support'
@@ -147,7 +159,7 @@ let OmniCpp_MayCompleteScope = 1
 
 " TagList configs.
 "======================================================
-let Tlist_Ctags_Cmd="/usr/bin/ctags"
+let Tlist_Ctags_Cmd=ctags
 let Tlist_Auto_Open=0
 let Tlist_Process_File_Always=1
 let Tlist_File_Fold_Auto_Close=1
