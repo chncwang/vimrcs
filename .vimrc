@@ -138,6 +138,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'vimscript/c-support'
 
 " python
+Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/pylint.vim'
 
 " lua
@@ -169,4 +170,11 @@ let Tlist_Display_Prototype=1
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=0
 let Tlist_Use_Right_Window=1
+"======================================================
+
+" jedi(python auto complete plugin)
+"======================================================
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#popup_select_first = 0
 "======================================================
