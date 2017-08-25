@@ -41,6 +41,7 @@ if os == linux
     command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.6 /usr/include/c++/4.6/x86_64-linux-gnu  /usr/include/c++/4.6/backward /usr/lib/gcc/x86_64-linux-gnu/4.6/include /usr/local/include /usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed /usr/include/x86_64-linux-gnu /usr/include 2>&1 &
 else
     let ctags = '/usr/local/bin/ctags'
+    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . /usr/include/c++/4.2.1/ /usr/local/include/
     if (has("gui_running"))
         colors evening
     endif
@@ -74,7 +75,7 @@ nmap tj <C-w>j
 nmap tr <C-w><C-r>
 nmap tn :tnext<CR>
 nmap tp :tprevious<CR>
-nmap rjv 20<C-w>>2<C-w>l22<C-w><2<C-w>h
+nmap tw <ESC><C-w>k:q<CR>
 
 function BuildIde()
     TlistToggle
@@ -89,25 +90,6 @@ endfunction
 
 command Ide call BuildIde()
 command Java call BuildJava()
-command Tu TlistUpdate
-command Tt TlistToggle
-command Rb ReadBookmarks
-command Sn set number
-command Lm ListMethods
-command Bm BuildMethods
-command Ha help alternate.txt
-command Ht help taglist.txt
-command Hl help luasupport.txt
-command Hn help nerd_tree.txt
-command Ho help omnicppcomplete
-command Hs help snipmate
-command Hc help csupport
-command Rc e ~/.vimrc
-command Jj inoremap jj <ESC>
-command Uj unmap! jj
-command Db %s/\s\+$//
-command Oc set cc=80
-command Cc set cc=0
 
 " Vundle
 "======================================================
@@ -133,7 +115,7 @@ Plugin 'hrp/EnhancedCommentify'
 Plugin 'vim-scripts/EasyGrep'
 
 " C++
-Plugin 'vim-scripts/OmniCppComplete'
+"Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vimscript/c-support'
 
@@ -178,3 +160,5 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#popup_select_first = 0
 "======================================================
+
+let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
