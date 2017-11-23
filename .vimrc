@@ -31,6 +31,11 @@ filetype indent on
 syntax on
 set autowrite
 
+"cuda begin
+au BufNewFile,BufRead *.cu set ft=cuda
+au BufNewFile,BufRead *.cuh set ft=cuda
+"cuda end
+
 let os = linux
 let s:uname = system("echo -n \"$(uname)\"")
 if s:uname == "Darwin"
