@@ -120,7 +120,7 @@ Plugin 'hrp/EnhancedCommentify'
 Plugin 'vim-scripts/EasyGrep'
 
 " C++
-"Plugin 'vim-scripts/OmniCppComplete'
+Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vimscript/c-support'
 
