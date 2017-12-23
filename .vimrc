@@ -43,7 +43,7 @@ if s:uname == "Darwin"
 endif
 if os == linux
     let ctags = '/usr/bin/ctags'
-    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cu .
+    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cu --langmap=c++:+.cuh .
 else
     let ctags = '/usr/local/bin/ctags'
     command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
