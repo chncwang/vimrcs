@@ -43,7 +43,7 @@ if s:uname == "Darwin"
 endif
 if os == linux
     let ctags = '/usr/bin/ctags'
-    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cu --langmap=c++:+.cuh .
+    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cuh+.cu . /usr/include/c++/5/
 else
     let ctags = '/usr/local/bin/ctags'
     command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
@@ -167,3 +167,15 @@ let g:jedi#popup_select_first = 0
 "======================================================
 
 let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
+
+" vim8 timer
+"======================================================
+function! SaveFile(timer)
+    silent! :wall!
+endfunction
+let save_file_timer = timer_start(500, 'SaveFile', {'repeat':-1})
+
+function BuildCTags(timer)
+    :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cuh+.cu . /usr/include/c++/5 /usr/include/c++/5/backward /usr/lib/gcc/x86_64-linux-gnu/5/include /usr/local/include /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed /usr/include/x86_64-linux-gnu /usr/include > /dev/null 2>&1 &
+endfunction
+"======================================================
