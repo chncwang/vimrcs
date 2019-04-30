@@ -105,6 +105,9 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+" terminal
+Plugin 'skywind3000/asyncrun.vim'
+
 " window
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/taglist.vim'
@@ -123,6 +126,9 @@ Plugin 'vim-scripts/EasyGrep'
 Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vimscript/c-support'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'w0rp/ale'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " python
 Plugin 'davidhalter/jedi-vim'
@@ -178,4 +184,57 @@ let save_file_timer = timer_start(500, 'SaveFile', {'repeat':-1})
 function BuildCTags(timer)
     :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cuh+.cu . /usr/include/c++/5 /usr/include/c++/5/backward /usr/lib/gcc/x86_64-linux-gnu/5/include /usr/local/include /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed /usr/include/x86_64-linux-gnu /usr/include > /dev/null 2>&1 &
 endfunction
+"======================================================
+
+" gutentags
+"======================================================
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = 'tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q', '--langmap=c++:+.cuh+.cu']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 检测 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+"======================================================
+
+" asyncrun
+"======================================================
+" 自动打开 quickfix window ，高度为 6
+let g:asyncrun_open = 6
+
+" 任务结束时候响铃提醒
+let g:asyncrun_bell = 1
+
+" 设置 F10 打开/关闭 Quickfix 窗口
+nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <silent> <F5> :AsyncRun cd build && make -j8 <cr>
+"======================================================
+
+" ale
+"======================================================
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
 "======================================================
