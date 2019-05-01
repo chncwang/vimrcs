@@ -113,7 +113,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/taglist.vim'
 
 " auto complete
-Plugin 'vim-scripts/AutoComplPop'
+"Plugin 'vim-scripts/AutoComplPop'
 Plugin 'ervandew/supertab'
 
 " quick edit
@@ -123,12 +123,12 @@ Plugin 'hrp/EnhancedCommentify'
 Plugin 'vim-scripts/EasyGrep'
 
 " C++
-Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vimscript/c-support'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'w0rp/ale'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'Valloric/YouCompleteMe'
 
 " python
 Plugin 'davidhalter/jedi-vim'
