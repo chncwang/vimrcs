@@ -9,6 +9,7 @@ set background=dark
 set backspace=indent,eol,start
 set expandtab
 set encoding=utf-8
+set fencs=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set fileencodings=ucs-bom,utf-8,default,latin1
 set guifont=Monaco\ 12
 set helplang=en
@@ -81,6 +82,7 @@ nmap tr <C-w><C-r>
 nmap tn :tnext<CR>
 nmap tp :tprevious<CR>
 nmap tw <ESC><C-w>k:q<CR>
+nnoremap <F1> :e! ++enc=utf8<CR>
 
 function BuildIde()
     TlistToggle
@@ -126,7 +128,6 @@ Plugin 'vim-scripts/EasyGrep'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vimscript/c-support'
 Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'w0rp/ale'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Valloric/YouCompleteMe'
 
@@ -220,21 +221,4 @@ let g:asyncrun_bell = 1
 " 设置 F10 打开/关闭 Quickfix 窗口
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 nnoremap <silent> <F5> :AsyncRun cd build && make -j8 <cr>
-"======================================================
-
-" ale
-"======================================================
-let g:ale_linters_explicit = 1
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:airline#extensions#ale#enabled = 1
-
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
 "======================================================
