@@ -83,6 +83,7 @@ nmap tn :tnext<CR>
 nmap tp :tprevious<CR>
 nmap tw <ESC><C-w>k:q<CR>
 nnoremap <F1> :e! ++enc=utf8<CR>
+nmap ti :Ide<CR>2<C-w>l25<C-w><2<C-w>h
 
 function BuildIde()
     TlistToggle
@@ -222,3 +223,5 @@ let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 nnoremap <silent> <F5> :AsyncRun cd build && make -j8 <cr>
 "======================================================
+
+"let g:ycm_server_python_intepreter="/usr/bin/python2.7"

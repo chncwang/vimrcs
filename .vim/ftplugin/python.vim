@@ -1,4 +1,4 @@
-set cc=80
+set cc=100
 
 setlocal indentexpr=GetGooglePythonIndent(v:lnum)
 
