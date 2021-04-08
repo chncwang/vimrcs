@@ -83,10 +83,9 @@ nmap tn :tnext<CR>
 nmap tp :tprevious<CR>
 nmap tw <ESC><C-w>k:q<CR>
 nnoremap <F1> :e! ++enc=utf8<CR>
-nmap ti :Ide<CR>2<C-w>l25<C-w><2<C-w>h
+nmap ti :Ide<CR>30<C-w>>
 
 function BuildIde()
-    TlistToggle
     Nt
 endfunction
 
@@ -113,7 +112,7 @@ Plugin 'skywind3000/asyncrun.vim'
 
 " window
 Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/taglist.vim'
+"Plugin 'vim-scripts/taglist.vim'
 
 " auto complete
 "Plugin 'vim-scripts/AutoComplPop'
@@ -178,10 +177,10 @@ let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/
 
 " vim8 timer
 "======================================================
-function! SaveFile(timer)
-    silent! :wall!
-endfunction
-let save_file_timer = timer_start(500, 'SaveFile', {'repeat':-1})
+"function! SaveFile(timer)
+"    silent! :wall!
+"endfunction
+"let save_file_timer = timer_start(500, 'SaveFile', {'repeat':-1})
 
 function BuildCTags(timer)
     :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cuh+.cu . /usr/include/c++/5 /usr/include/c++/5/backward /usr/lib/gcc/x86_64-linux-gnu/5/include /usr/local/include /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed /usr/include/x86_64-linux-gnu /usr/include > /dev/null 2>&1 &
