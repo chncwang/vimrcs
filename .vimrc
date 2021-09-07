@@ -44,10 +44,10 @@ if s:uname == "Darwin"
 endif
 if os == linux
     let ctags = '/usr/bin/ctags'
-    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cuh+.cu . /usr/include/c++/5/
+"    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cuh+.cu . /usr/include/c++/5/
 else
     let ctags = '/usr/local/bin/ctags'
-    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+"    command Ct !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
     if (has("gui_running"))
         colors evening
     endif
@@ -73,6 +73,11 @@ let NERDTreeMouseMode=1
 
 command Nt NERDTree
 "======================================================
+"
+"function! SaveFile(timer)
+"    silent! :wall<CR>
+"endfunction
+nmap <C-s> :wall<CR>
 
 nmap th <C-w>h
 nmap tl <C-w>l
@@ -120,9 +125,22 @@ Plugin 'ervandew/supertab'
 
 " quick edit
 Plugin 'hrp/EnhancedCommentify'
+Plugin 'terryma/vim-expand-region'
 
 " refactoring
 Plugin 'vim-scripts/EasyGrep'
+
+" git
+Plugin 'tpope/vim-fugitive'
+
+"interface
+Plugin 'vim-airline/vim-airline'
+
+"Searching
+Plugin 'dyng/ctrlsf.vim'
+let g:ctrlsf_default_view_mode = 'compact'
+
+"navigation
 
 " C++
 Plugin 'vim-scripts/a.vim'
@@ -144,26 +162,26 @@ filetype plugin indent on
 
 " OmniCpp configs.
 "======================================================
-let OmniCpp_NamespaceSearch = 2
-let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_DefaultNamespaces = ["std", "cocos2d", "boost", "map"]
-let OmniCpp_MayCompleteScope = 1
+"let OmniCpp_NamespaceSearch = 2
+"let OmniCpp_ShowPrototypeInAbbr = 1
+"let OmniCpp_DefaultNamespaces = ["std", "cocos2d", "boost", "map"]
+"let OmniCpp_MayCompleteScope = 1
 "======================================================
 
 " TagList configs.
 "======================================================
-let Tlist_Ctags_Cmd=ctags
-let Tlist_Auto_Open=0
-let Tlist_Process_File_Always=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Sort_Type="order"
-let Tlist_WinWidth=60
-let Tlist_Compact_Format=1
-let Tlist_Enable_Fold_Column=0
-let Tlist_Display_Prototype=1
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=0
-let Tlist_Use_Right_Window=1
+"let Tlist_Ctags_Cmd=ctags
+"let Tlist_Auto_Open=0
+"let Tlist_Process_File_Always=1
+"let Tlist_File_Fold_Auto_Close=1
+"let Tlist_Sort_Type="order"
+"let Tlist_WinWidth=60
+"let Tlist_Compact_Format=1
+"let Tlist_Enable_Fold_Column=0
+"let Tlist_Display_Prototype=1
+"let Tlist_Show_One_File=1
+"let Tlist_Exit_OnlyWindow=0
+"let Tlist_Use_Right_Window=1
 "======================================================
 
 " jedi(python auto complete plugin)
@@ -177,10 +195,7 @@ let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/
 
 " vim8 timer
 "======================================================
-"function! SaveFile(timer)
-"    silent! :wall!
-"endfunction
-"let save_file_timer = timer_start(500, 'SaveFile', {'repeat':-1})
+"let save_file_timer = timer_start(2000, 'SaveFile', {'repeat':-1})
 
 function BuildCTags(timer)
     :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --langmap=c++:+.cuh+.cu . /usr/include/c++/5 /usr/include/c++/5/backward /usr/lib/gcc/x86_64-linux-gnu/5/include /usr/local/include /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed /usr/include/x86_64-linux-gnu /usr/include > /dev/null 2>&1 &
