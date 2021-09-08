@@ -89,6 +89,7 @@ nmap tp :tprevious<CR>
 nmap tw <ESC><C-w>k:q<CR>
 nnoremap <F1> :e! ++enc=utf8<CR>
 nmap ti :Ide<CR>30<C-w>>
+nmap tf :Leaderf function<CR>
 
 function BuildIde()
     Nt
@@ -117,15 +118,14 @@ Plugin 'skywind3000/asyncrun.vim'
 
 " window
 Plugin 'scrooloose/nerdtree'
-"Plugin 'vim-scripts/taglist.vim'
 
 " auto complete
-"Plugin 'vim-scripts/AutoComplPop'
 Plugin 'ervandew/supertab'
 
 " quick edit
 Plugin 'hrp/EnhancedCommentify'
 Plugin 'terryma/vim-expand-region'
+Plugin 'jiangmiao/auto-pairs'
 
 " refactoring
 Plugin 'vim-scripts/EasyGrep'
@@ -136,15 +136,16 @@ Plugin 'tpope/vim-fugitive'
 "interface
 Plugin 'vim-airline/vim-airline'
 
-"Searching
+"searching
 Plugin 'dyng/ctrlsf.vim'
 let g:ctrlsf_default_view_mode = 'compact'
 
-"navigation
+Plugin 'Yggdroot/LeaderF'
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
 
 " C++
 Plugin 'vim-scripts/a.vim'
-Plugin 'vimscript/c-support'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Valloric/YouCompleteMe'
